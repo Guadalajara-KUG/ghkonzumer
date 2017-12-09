@@ -1,7 +1,9 @@
 package mx.posadev
 
-actual object GithubKonzumer {
-    actual fun api(){
+import mx.posadev.response.Response
 
+actual object GithubKonzumer {
+    actual fun api(): Response {
+        return object : Response {}
     }
 }

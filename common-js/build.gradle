@@ -18,8 +18,8 @@ dependencies {
 
 [compileKotlin2Js, compileTestKotlin2Js]*.configure {
     kotlinOptions {
-//        sourceMap = true
-//        sourceMapEmbedSources = "always"
+        sourceMap = true
+        sourceMapEmbedSources = "always"
         moduleKind = 'commonjs'
         metaInfo = false
     }

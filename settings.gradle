@@ -1,4 +1,4 @@
 rootProject.name = 'ghkonzumer'
 
-include 'common-jvm'
+include 'common-jvm', 'common-js'
 include 'shared'

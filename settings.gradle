@@ -1,3 +1,4 @@
 rootProject.name = 'ghkonzumer'
 
 
+include 'shared'

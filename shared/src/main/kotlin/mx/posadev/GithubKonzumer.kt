@@ -6,5 +6,5 @@ import mx.posadev.response.Response
 val version = "0.0.1"
 
 expect object GithubKonzumer {
-    fun api(endpoint: Resource): Response
+    fun api(resource: Resource): Response
 }

@@ -9,4 +9,6 @@ val HTTP_HEADERS = mapOf(
         "Content-Type" to "application/json"
 )
 
-expect class Request
+expect class Request {
+    fun call(): Response
+}

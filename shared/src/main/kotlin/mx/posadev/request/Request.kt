@@ -12,3 +12,5 @@ val HTTP_HEADERS = mapOf(
 expect class Request {
     fun call(): Response
 }
+
+expect fun createRequest(resource: Resource): Request

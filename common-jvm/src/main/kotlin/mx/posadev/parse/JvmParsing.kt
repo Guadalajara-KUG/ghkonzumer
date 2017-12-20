@@ -1,10 +1,9 @@
 package mx.posadev.parse
 
 import mx.posadev.request.Resource
+import mx.posadev.request.User
 import mx.posadev.request.Zen
-import mx.posadev.response.ParsingError
-import mx.posadev.response.Response
-import mx.posadev.response.ZenResponse
+import mx.posadev.response.*
 
 actual fun parseResource(resource: Resource, string: String): Response {
     if (resource is Zen) {
@@ -12,5 +11,14 @@ actual fun parseResource(resource: Resource, string: String): Response {
     }
 
     val jsonAdapter = Parser.createResourceAdapter(resource)
-    return jsonAdapter.fromJson(string) ?: ParsingError("Error parsing: $string")
+
+    val response = if (resource is User && resource.fetchRepos) {
+        //FIXME: Not very idiomatic
+        val listResponse: List<RepoResponse> = jsonAdapter.fromJson(string) as List<RepoResponse>
+        UserReposResponse(listResponse.toTypedArray())
+    }else{
+        jsonAdapter.fromJson(string)
+    }
+
+    return response ?: ParsingError("Error parsing: $string")
 }

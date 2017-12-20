@@ -3,6 +3,7 @@ package mx.posadev
 import mx.posadev.request.User
 import mx.posadev.request.Zen
 import mx.posadev.response.Response
+import mx.posadev.response.UserReposResponse
 import mx.posadev.response.UserResponse
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -20,15 +21,24 @@ class GithubKonzumerTest {
     }
 
     @Test
-    fun testApiForUser(){
+    fun testApiForUser() {
         println("Checking that we are allowed to call `api` method")
         val response = GithubKonzumer.api(User("sierisimo"))
         println(response)
         assertTrue(response is UserResponse, "Checking that we get a Response after calling the API")
-        if(response is UserResponse) {
+        if (response is UserResponse) {
             assertNotNull(response.login)
             assertEquals("sierisimo", response.login)
             assertEquals("http://about.me/sierisimo", response.blog)
+        }
+    }
+
+    @Test
+    fun testApiForUserWithRepos() {
+        val response = GithubKonzumer.api(User("sierisimo", true))
+        assertTrue(response is UserReposResponse, "Response is a list of repos from a user")
+        if (response is UserReposResponse) {
+            assertTrue(response.repos.size >= 0)
         }
     }
 }

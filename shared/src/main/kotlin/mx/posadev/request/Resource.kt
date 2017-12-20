@@ -8,7 +8,7 @@ sealed class Resource(val endpoint: String) {
 
 object Zen : Resource("/$zen")
 
-class User(username: String, fetchRepos: Boolean = false) : Resource("/$users/$username${if (fetchRepos) "/$repos" else ""}")
+class User(username: String, val fetchRepos: Boolean = false) : Resource("/$users/$username${if (fetchRepos) "/$repos" else ""}")
 
 class License(licenseName: String) : Resource("/$licenses/$licenseName")
 

@@ -15,7 +15,7 @@ class UserAdapter {
                         html_url,
                         followers_url,
                         following_url,
-                        gists__url,
+                        gists_url,
                         starred_url,
                         subscriptions_url,
                         organizations_url,
@@ -49,7 +49,7 @@ class UserJson {
     lateinit var html_url: String
     lateinit var followers_url: String
     lateinit var following_url: String
-    lateinit var gists__url: String
+    lateinit var gists_url: String
     lateinit var starred_url: String
     lateinit var subscriptions_url: String
     lateinit var organizations_url: String
@@ -58,17 +58,17 @@ class UserJson {
     lateinit var received_events_url: String
     lateinit var type: String
     var site_admin: Boolean = false
-    lateinit var name: String
-    lateinit var company: String
-    lateinit var blog: String
-    lateinit var location: String
-    lateinit var email: String
+    var name: String? = null
+    var company: String? = null
+    var blog: String? = null
+    var location: String? = null
+    var email: String? = null
     var hireable: Boolean = false
-    lateinit var bio: String
+    var bio: String? = null
     var public_repos: Long = 0
     var public_gists: Long = 0
     var followers: Long = 0
     var following: Long = 0
-    lateinit var created_at: String
-    lateinit var updated_at: String
+    var created_at: String? = null
+    var updated_at: String? = null
 }
